@@ -1,0 +1,81 @@
+model: AgentJob
+request:
+  header:
+    user: ${UserID}$
+  method: post
+  url_path: /manager/agents/job
+server: ar_manager
+story_description: 批量添加Agent任务
+switch: true
+body:
+  hostIds:
+  - ${HostID}$
+  jobTemplateIds:
+  - ${JobTemplateID}$
+
+testcases:
+  TestCase1:
+    Description: 正常场景:批量添加Agent任务
+    req_body: ''
+    runflag: true
+    verify:
+      AssertType: 0
+      value: 200
+
+  TestCase2:
+    Description: 异常场景:批量添加Agent任务,HostID
+    req_body:
+      hostIds:
+      - ${UUid}$
+    runflag: true
+    verify:
+      AssertType: 0
+      value: 202
+
+  TestCase3:
+    Description: 异常场景:批量添加Agent任务HostIDl列表中有非法主机
+    req_body:
+      jobTemplateIds:
+      - ${UUid}$
+    runflag: true
+    verify:
+      AssertType: 0
+      value: 202
+
+  TestCase4:
+    Description: 异常场景:批量添加Agent任务jobTemplateIds列表中有非法主机
+    req_body:
+      jobTemplateIds:
+      - ${JobTemplateID}$
+      - ${UUid}$
+    runflag: true
+    verify:
+      AssertType: 0
+      value: 202
+
+  TestCase5:
+    Description: 异常场景:批量添加Agent任务jobTemplateIds参数类型错误
+    req_body:
+      jobTemplateIds: ${JobTemplateID}$
+    runflag: true
+    verify:
+      AssertType: 0
+      value: 202
+
+  TestCase6:
+    Description: 异常场景:批量添加Agent任务hostIds参数类型错误
+    req_body:
+      hostIds: ${HostID}$
+    runflag: true
+    verify:
+      AssertType: 0
+      value: 202
+
+  TestCase7:
+    Description: 异常场景:批量添加Agent任务hostIds参数为空
+    req_body:
+      hostIds: ''
+    runflag: true
+    verify:
+      AssertType: 0
+      value: 202

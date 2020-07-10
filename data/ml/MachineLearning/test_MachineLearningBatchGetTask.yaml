@@ -1,0 +1,34 @@
+story_description: 批量获取机器学习任务
+server: ml
+model: MachineLearning
+switch: true
+request:
+  method: get
+  url_path: /ml/list?start=0&limit=1000
+
+testcases:
+  TestCase1:
+    Description: 正常场景:批量获取机器学习任务成功
+    req_body: ''
+    runflag: true
+    verify:
+      AssertType: 0
+      value: 200
+
+  TestCase2:
+    Description: 正常场景:批量获取机器学习任务成功
+    url_path: /ml/list?start=-1&limit=1000
+    req_body: ''
+    runflag: true
+    verify:
+      AssertType: 0
+      value: 200
+
+  TestCase3:
+    Description: 正常场景:批量获取机器学习任务成功
+    url_path: /ml/list?start=0&limit=-2
+    req_body: ''
+    runflag: true
+    verify:
+      AssertType: 0
+      value: 200

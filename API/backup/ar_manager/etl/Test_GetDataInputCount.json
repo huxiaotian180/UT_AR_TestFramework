@@ -1,0 +1,1 @@
+{"story_description": "获取数据输入项的总数", "server": "ar_manager", "model": "etl", "switch": false, "request": {"method": "get", "url_path": "/etl/input/count"}, "body": "", "testcases": {"TestCase14": {"Description": "正常场景", "req_body": "", "runflag": true, "verify": {"type": 0}}}}

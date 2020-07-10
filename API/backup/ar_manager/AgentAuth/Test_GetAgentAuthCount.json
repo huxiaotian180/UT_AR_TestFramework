@@ -1,0 +1,1 @@
+{"model": "AgentAuth", "request": {"method": "get", "url_path": "/manager/agents/auth/count"}, "server": "ar_manager", "story_description": "获取认证信息总数", "switch": true, "testcases": {"TestCase1": {"Description": "正常场景:获取认证信息总数", "req_body": "", "runflag": true, "verify": {"AssertType": 0, "value": 200}}}}

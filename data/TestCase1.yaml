@@ -1,0 +1,21 @@
+description: ''
+filters:
+  host:
+  - negative: 0
+    type: 0
+    value: 192.168.84.26
+  type:
+  - negative: 0
+    type: 0
+    value: 场景测试
+  - type: 2
+  - negative: 0
+    type: 0
+    value: AS访问日志
+  tags:
+  - '*'
+  logWareHouse:
+  - TNMKAjz7
+  advance: ''
+groupName: es日志分组
+parentGroupId: ''

@@ -1,0 +1,15 @@
+story_description: 获取所有数据输入项的配置信息
+server: ar_manager
+model: etl
+switch: true
+request:
+  method: get
+  url_path: /etl/input/all
+testcases:
+  TestCase23:
+    Description: 正常场景:获取所有数据输入项的配置信息
+    req_body: ''
+    runflag: true
+    verify:
+      AssertType: 0
+      value: 200

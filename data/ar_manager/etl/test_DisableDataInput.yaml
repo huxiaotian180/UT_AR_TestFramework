@@ -1,0 +1,25 @@
+story_description: 关闭数据输入端口
+server: ar_manager
+model: etl
+switch: true
+request:
+  method: put
+  url_path: ''
+testcases:
+  TestCase1:
+    Description: 正常场景:id存在
+    url_path: /etl/input/${etcId}$/disable
+    req_body: ''
+    runflag: true
+    verify:
+      AssertType: 0
+      value: 200
+
+  TestCase2:
+    Description: 异常场景:id不存在
+    url_path: /etl/input/${UUid}$/disable
+    req_body: ''
+    runflag: true
+    verify:
+      AssertType: 0
+      value: 202

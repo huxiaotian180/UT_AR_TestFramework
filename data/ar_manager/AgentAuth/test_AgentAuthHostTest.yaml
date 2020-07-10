@@ -1,0 +1,83 @@
+model: AgentAuth
+request:
+  method: post
+  url_path: /manager/agents/auth/test
+server: ar_manager
+story_description: 检测主机认证信息
+switch: true
+body:
+  config:
+    name: root
+    password: eisoo.com123
+    port: 22
+  testHost: 192.168.84.84
+  type: ssh
+testcases:
+  TestCase1:
+    Description: 正常场景:检测主机认证信息
+    req_body: ''
+    runflag: true
+    verify:
+      AssertType: 1
+      key: status
+      value: 1
+
+  TestCase2:
+    Description: 正常场景:检测主机认证信息,端口不匹配
+    req_body:
+      port: 222
+    runflag: true
+    verify:
+      AssertType: 1
+      key: status
+      value: 0
+
+  TestCase3:
+    Description: 正常场景:检测主机认证信息,password不匹配
+    req_body:
+      password: 222
+    runflag: true
+    verify:
+      AssertType: 1
+      key: status
+      value: 0
+
+  TestCase4:
+    Description: 正常场景:检测主机认证信息,password为空
+    req_body:
+      password: ''
+    runflag: true
+    verify:
+      AssertType: 1
+      key: status
+      value: 0
+
+  TestCase5:
+    Description: 正常场景:检测主机认证信息,主机name错误
+    req_body:
+      name: eisoo123
+    runflag: true
+    verify:
+      AssertType: 1
+      key: status
+      value: 0
+
+  TestCase6:
+    Description: 正常场景:检测主机认证信息,testHost密码不匹配
+    req_body:
+      testHost: 10.12.84.84
+    runflag: true
+    verify:
+      AssertType: 1
+      key: status
+      value: 0
+
+  TestCase7:
+    Description: 正常场景:检测主机认证信息,testHost为空
+    req_body:
+      testHost: ''
+    runflag: true
+    verify:
+      AssertType: 1
+      key: status
+      value: 0

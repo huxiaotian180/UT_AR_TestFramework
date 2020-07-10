@@ -1,0 +1,26 @@
+model: AgentAudit
+request:
+  method: post
+  url_path: /manager/agentAudit/count
+server: ar_manager
+story_description: Agent文件审计日志数量获取
+switch: false
+body:
+  filter:
+    hostName: ''
+  jobType: collect
+  limit: -1
+  start: 0
+  status: []
+  timeRange:
+  - 1587975092995
+  - 1589271092995
+  type: []
+testcases:
+  TestCase1:
+    Description: 正常场景:Agent文件审计日志数量获取
+    req_body: ''
+    runflag: true
+    verify:
+      AssertType: 0
+      value: 200

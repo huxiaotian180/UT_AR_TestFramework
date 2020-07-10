@@ -1,0 +1,37 @@
+model: AgentHostgroup
+request:
+  method: put
+  url_path: /manager/agents/hostgroup/add/host/${GroupID}$
+server: ar_manager
+story_description: 添加主机到Agent主机组
+switch: true
+body:
+  hosts:
+  - ${HostID}$
+testcases:
+  TestCase1:
+    Description: 正常场景:添加合法主机到主机组
+    req_body: ''
+    runflag: true
+    verify:
+      AssertType: 0
+      value: 200
+
+  TestCase2:
+    Description: 异常场景:添加非法主机到主机组
+    req_body:
+      hosts:
+      - ${UUid}$
+    runflag: true
+    verify:
+      AssertType: 0
+      value: 202
+
+  TestCase3:
+    Description: 异常场景:hosts参数类型错误
+    req_body:
+      hosts: ${HostID}$
+    runflag: true
+    verify:
+      AssertType: 0
+      value: 202

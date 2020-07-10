@@ -1,0 +1,117 @@
+story_description: 更新日志库
+server: dataManager
+model: logWareHouse
+switch: false
+request:
+  method: PUT
+  url_path: /api/v1/dataManager/logWareHouse/${id}$
+body:
+  fullTextSearch: 1
+  wareHouseName: 日志库名${AnyRobotNameID}$
+  dataType: ${dataType}$
+  indexCreateRule: 4
+  numberOfShards: 2
+  hotWarmTransferPlan:
+    executePlan:
+      timeUnit: days
+      minute: '00'
+      days: 1
+      hour: '00'
+    transReplicas: 1
+  lifeCycleSetting:
+    year: 999
+  metaField:
+  - field: '1'
+    type: text
+  numberOfReplicas: 1
+  eachShardSize:
+    GB: 90
+    
+testcases:
+  TestCase16:
+    Description: 正常场景:修改日志库名称，更新日志库成功
+    req_body: ''
+    runflag: true
+    verify:
+      AssertType: 0
+      value: 200
+
+  TestCase17:
+    Description: 异常场景:日志库名称超过40字节，更新日志库失败
+    req_body: ''
+    runflag: true
+    verify:
+      AssertType: 0
+      value: 200
+
+  TestCase18:
+    Description: 异常场景:日志库名称已存在，更新日志库失败
+    req_body: ''
+    runflag: true
+    verify:
+      AssertType: 0
+      value: 200
+
+  TestCase19:
+    Description: 异常场景:日志库类型名不允许修改，更新日志库失败
+    req_body: ''
+    runflag: true
+    verify:
+      AssertType: 0
+      value: 200
+
+  TestCase20:
+    Description: 异常场景:索引创建规则请求参数错误，更新日志库失败
+    req_body: ''
+    runflag: true
+    verify:
+      AssertType: 0
+      value: 200
+
+  TestCase21:
+    Description: 异常场景:索引创建规则异常，更新日志库失败
+    req_body: ''
+    runflag: true
+    verify:
+      AssertType: 0
+      value: 200
+
+  TestCase22:
+    Description: 异常场景:分片数值异常，更新日志库失败
+    req_body: ''
+    runflag: true
+    verify:
+      AssertType: 0
+      value: 200
+
+  TestCase23:
+    Description: 异常场景:副本数值异常，更新日志库失败
+    req_body: ''
+    runflag: true
+    verify:
+      AssertType: 0
+      value: 200
+
+  TestCase24:
+    Description: 异常场景:分片大小值异常，更新日志库失败
+    req_body: ''
+    runflag: true
+    verify:
+      AssertType: 0
+      value: 200
+
+  TestCase25:
+    Description: 异常场景:热温迁移副本数值异常，更新日志库失败
+    req_body: ''
+    runflag: true
+    verify:
+      AssertType: 0
+      value: 200
+
+  TestCase26:
+    Description: 异常场景:生命周期设置异常，更新日志库失败
+    req_body: ''
+    runflag: true
+    verify:
+      AssertType: 0
+      value: 200

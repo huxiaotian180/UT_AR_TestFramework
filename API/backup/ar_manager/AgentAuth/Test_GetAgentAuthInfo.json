@@ -1,0 +1,1 @@
+{"model": "AgentAuth", "request": {"method": "get", "url_path": "/manager/agents/auth/${AuthID}$"}, "server": "ar_manager", "story_description": "获取主机认证信息", "switch": true, "testcases": {"TestCase1": {"Description": "正常场景:获取主机认证信息", "req_body": "", "runflag": true, "verify": {"AssertType": 0, "value": 200}}}}

@@ -1,0 +1,26 @@
+model: Role
+request:
+  method: delete
+  url_path: ''
+server: ar_manager
+story_description: 删除角色
+switch: true
+testcases:
+  TestCase1:
+    Description: 正常场景:删除角色
+    url_path: /manager/role/${RoleId}$
+    req_body: ''
+    runflag: true
+    verify:
+      AssertType: 0
+      value: 200
+
+  TestCase2:
+    Description: 异常场景:删除角色
+    url_path: /manager/role/${UUid}$
+    isOperationDb: ''
+    req_body: ''
+    runflag: true
+    verify:
+      AssertType: 0
+      value: 202

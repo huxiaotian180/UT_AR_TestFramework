@@ -1,0 +1,16 @@
+story_description: 获取本地上传总数
+server: ar_manager
+model: upload
+switch: false
+request:
+  method: get
+  url_path: /manager/upload/count
+
+testcases:
+  TestCase1:
+    Description: 正常场景
+    req_body: ''
+    runflag: true
+    verify:
+      AssertType: 0
+      value: 200

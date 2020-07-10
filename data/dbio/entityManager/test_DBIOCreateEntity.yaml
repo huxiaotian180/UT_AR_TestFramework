@@ -1,0 +1,42 @@
+story_description: 新建实体组
+server: dbio
+model: entityManager
+switch: false
+request:
+  method: post
+  url_path: /manager/dbio/entityManager/groups/group
+body:
+  groupName: ${groupName}$
+
+testcases:
+  TestCase93:
+    Description: 正常场景
+    req_body: ''
+    runflag: true
+    verify:
+      AssertType: 0
+      value: 200
+
+  TestCase94:
+    Description: 异常场景：重名
+    req_body: ''
+    runflag: true
+    verify:
+      AssertType: 0
+      value: 200
+
+  TestCase95:
+    Description: 异常场景：33个字符
+    req_body: ''
+    runflag: true
+    verify:
+      AssertType: 0
+      value: 200
+
+  TestCase96:
+    Description: 异常场景：为空
+    req_body: ''
+    runflag: true
+    verify:
+      AssertType: 0
+      value: 200

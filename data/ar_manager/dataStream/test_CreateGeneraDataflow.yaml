@@ -1,0 +1,283 @@
+story_description: 新建数据流任务
+server: ar_manager
+model: dataStream
+switch: true
+request:
+  method: POST
+  url_path: /manager/datastream
+body:
+  lifeCycle:
+    day: 8
+  name: AnyShare操作日志数据流任务${AnyRobotNameID}$
+  sinkType: kafka
+  status: running
+  switch: 1
+  sourceType: elasticsearch
+  sinkConfig:
+    topic: topic_${AnyRobotNameID}$
+    type: new
+  schedule:
+    timeInterval: 1
+    timeUnit: h
+    type: interval
+  type: general
+  description: AnyShare操作日志数据流任务
+  sourceConfig:
+    searchCondition:
+      type: manual
+      indexList:
+      - ${indexList}$
+      fieldList: []
+      indexListDisplay:
+      - ${indexListDisplay}
+      manual:
+        type: '*'
+        year: '*'
+        month: '*'
+testcases:
+  TestCase1:
+    Description: 正常场景:创建数据流
+    req_body: ''
+    runflag: true
+    verify:
+      AssertType: 2
+      key: streamId
+      value: true
+
+  TestCase2:
+    Description: 异常场景:创建数据流,name参数为空
+    req_body:
+      name: ''
+    runflag: true
+    verify:
+      AssertType: 2
+      key: streamId
+      value: false
+
+  TestCase3:
+    Description: 异常场景:创建数据流,status参数为空
+    req_body:
+      status: ''
+    runflag: true
+    verify:
+      AssertType: 2
+      key: streamId
+      value: false
+
+  TestCase4:
+    Description: 异常场景:创建数据流,switch参数为空
+    req_body:
+      status: ''
+    runflag: true
+    verify:
+      AssertType: 2
+      key: streamId
+      value: false
+
+  TestCase5:
+    Description: 异常场景:创建数据流,day参数为空
+    req_body:
+      day: ''
+    runflag: true
+    verify:
+      AssertType: 2
+      key: streamId
+      value: false
+
+  TestCase6:
+    Description: 异常场景:创建数据流,sourceType参数为空
+    req_body:
+      sourceType: ''
+    runflag: true
+    verify:
+      AssertType: 2
+      key: streamId
+      value: false
+
+  TestCase7:
+    Description: 异常场景:创建数据流,sinkType参数为空
+    req_body:
+      sinkType: ''
+    runflag: true
+    verify:
+      AssertType: 2
+      key: streamId
+      value: false
+
+  TestCase8:
+    Description: 异常场景:创建数据流,day参数类型错误
+    req_body:
+      day: 1abc
+    runflag: true
+    verify:
+      AssertType: 2
+      key: streamId
+      value: false
+
+  TestCase9:
+    Description: 异常场景:创建数据流,lifeCycle参数类型错误
+    req_body:
+      lifeCycle: 8
+    runflag: true
+    verify:
+      AssertType: 2
+      key: streamId
+      value: false
+
+  TestCase10:
+    Description: 异常场景:创建数据流,switch参数类型错误
+    req_body:
+      switch: a
+    runflag: true
+    verify:
+      AssertType: 2
+      key: streamId
+      value: false
+
+  TestCase11:
+    Description: 异常场景:创建数据流,indexList参数为空
+    req_body:
+      indexList: []
+    runflag: true
+    verify:
+      AssertType: 2
+      key: streamId
+      value: false
+
+  TestCase12:
+    Description: 异常场景:创建数据流,indexListDisplay参数为空
+    req_body:
+      indexListDisplay: []
+    runflag: true
+    verify:
+      AssertType: 2
+      key: streamId
+      value: false
+
+  TestCase13:
+    Description: 异常场景:创建数据流,indexList参数值非法
+    req_body:
+      indexList:
+      - 2d7c51b6-${AnyRobotNameID}$
+    runflag: true
+    verify:
+      AssertType: 2
+      key: streamId
+      value: false
+
+  TestCase14:
+    Description: 异常场景:创建数据流,indexListDisplay参数值非法
+    req_body:
+      indexListDisplay:
+      - AnyShare访问日志-${AnyRobotNameID}$
+    runflag: true
+    verify:
+      AssertType: 2
+      key: streamId
+      value: false
+
+  TestCase15:
+    Description: 异常场景:创建数据流,timeInterval参数值非法
+    req_body:
+      timeInterval: a
+    runflag: true
+    verify:
+      AssertType: 2
+      key: streamId
+      value: false
+
+  TestCase16:
+    Description: 异常场景:创建数据流,timeInterval参数值为空
+    req_body:
+      timeInterval: ''
+    runflag: true
+    verify:
+      AssertType: 2
+      key: streamId
+      value: false
+
+  TestCase17:
+    Description: 异常场景:创建数据流,timeUnit参数值非法
+    req_body:
+      timeUnit: bd
+    runflag: true
+    verify:
+      AssertType: 2
+      key: streamId
+      value: false
+
+  TestCase18:
+    Description: 异常场景:创建数据流,timeUnit参数值为空
+    req_body:
+      timeUnit: ''
+    runflag: true
+    verify:
+      AssertType: 2
+      key: streamId
+      value: false
+
+  TestCase19:
+    Description: 异常场景:创建数据流,时间策略type参数值非法
+    req_body:
+      schedule:
+        timeInterval: 1
+        timeUnit: h
+        type: interval123
+    runflag: true
+    verify:
+      AssertType: 2
+      key: streamId
+      value: false
+
+  TestCase20:
+    Description: 异常场景:创建数据流,时间策略type参数值为空
+    req_body:
+      schedule:
+        timeInterval: 1
+        timeUnit: h
+        type: ''
+    runflag: true
+    verify:
+      AssertType: 2
+      key: streamId
+      value: false
+
+  TestCase21:
+    Description: 异常场景:创建数据流,status参数值错误
+    req_body:
+      status: opened123
+    runflag: true
+    verify:
+      AssertType: 2
+      key: streamId
+      value: false
+
+  TestCase22:
+    Description: 异常场景:创建数据流,switch参数值错误
+    req_body:
+      switch: 3
+    runflag: true
+    verify:
+      AssertType: 2
+      key: streamId
+      value: false
+
+  TestCase23:
+    Description: 异常场景:创建数据流,switch参数值错误
+    req_body:
+      switch: a
+    runflag: true
+    verify:
+      AssertType: 2
+      key: streamId
+      value: false
+
+  TestCase24:
+    Description: 异常场景:创建数据流,schedule参数值为空
+    req_body:
+      schedule: ''
+    runflag: true
+    verify:
+      AssertType: 2
+      key: streamId
+      value: false

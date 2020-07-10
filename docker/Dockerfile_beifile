@@ -1,0 +1,40 @@
+FROM 192.168.84.23:5000/library/allure:latest
+MAINTAINER xiaothu "Evan.hu@eisoo.com"
+
+ENV LANG en_US.UTF-8
+
+ADD UT_AR_TestFramework.tar.gz /UT_AR_TestFramework
+COPY requirements.txt /requirements.txt
+#COPY CentOS-Base.repo /CentOS-Base.repo
+
+RUN set -ex \
+#    && echo "nameserver 192.168.4.111" > /etc/resolv.conf \
+#    && rm -rf /etc/yum.repos.d/* \
+#    && mv /CentOS-Base.repo /etc/yum.repos.d/ \
+#    && yum clean all \
+#    && yum makecache \
+    && yum install -y gcc gcc-c++ \
+    && yum install -y nodejs \
+    && npm install -g allure-commandline --save-dev \
+    && yum install net-tools -y \
+    && yum install openssl-devel bzip2-devel expat-devel gdbm-devel readline-devel sqlite-devel -y \
+    && /bin/cp /usr/share/zoneinfo/Asia/Shanghai /etc/localtime && echo 'Asia/Shanghai' >/etc/timezone \
+    && pip3 uninstall pytest-allure-adaptor -y \
+    && pip3 uninstall pytest -y \
+    && cd /home \
+    && wget https://www.python.org/ftp/python/3.6.7/Python-3.6.7.tgz \
+    && tar -zxvf Python-3.6.7.tgz \
+    && cd Python-3.6.7 \
+    && ./configure --prefix=/usr/local/python3 \
+    && make && make install \
+    && rm -rf /usr/bin/pip3 \
+    && rm -rf /usr/bin/python3 \
+    && ln -s /usr/local/python3/bin/python3 /usr/bin/python3 \
+    && ln -s /usr/local/python3/bin/pip3 /usr/bin/pip3 \
+    && /usr/local/python3/bin/python3.6 -m pip install --ignore-installed -i http://mirrors.aliyun.com/pypi/simple/ --trusted-host mirrors.aliyun.com --upgrade pip \
+    && pip3 install --ignore-installed -i http://mirrors.aliyun.com/pypi/simple/ --trusted-host mirrors.aliyun.com -r /requirements.txt
+
+EXPOSE 5000
+EXPOSE 8083
+WORKDIR /UT_AR_TestFramework/
+ENTRYPOINT [ "/usr/bin/python3","/UT_AR_TestFramework/app.py" ]

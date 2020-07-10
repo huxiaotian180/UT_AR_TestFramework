@@ -1,0 +1,1 @@
+{"story_description": "批量导入日志库", "server": "dataManager", "model": "logWareHouse", "switch": false, "request": {"method": "POST", "url_path": "/api/v1/dataManager/logWareHouse?operation=import"}, "body": "", "testcases": {"TestCase15": {"Description": "正常场景:批量导入日志库成功", "req_body": "", "runflag": true, "verify": {"AssertType": 0}}}}

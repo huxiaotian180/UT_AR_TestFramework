@@ -1,0 +1,24 @@
+story_description: 根据索引名、日志库名模糊查找索引
+server: storageManager
+model: indicesWareHouse
+switch: false
+request:
+  method: GET
+  url_path: /api/v1/dataManager/indicesWareHouse?
+
+testcases:
+  TestCase7:
+    Description: 正常场景:根据索引名查找索引成功
+    req_body: ''
+    runflag: true
+    verify:
+      AssertType: 0
+      value: 200
+
+  TestCase8:
+    Description: 异常场景:索引名类型异常，根据索引名查找索引失败
+    req_body: ''
+    runflag: true
+    verify:
+      AssertType: 0
+      value: 200

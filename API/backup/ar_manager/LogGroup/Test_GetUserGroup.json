@@ -1,0 +1,1 @@
+{"story_description": "获取用户的分组的树", "server": "ar_manager", "model": "LogGroup", "switch": false, "request": {"method": "GET", "url_path": "/manager/loggroup/${userID}$/tree"}, "body": "", "testcases": {"TestCase27": {"Description": "正常场景:获取用户的分组的树", "req_body": "", "runflag": true, "verify": {"AssertType": 0}}}}

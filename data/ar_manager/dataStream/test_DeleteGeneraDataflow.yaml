@@ -1,0 +1,26 @@
+story_description: 删除一条任务
+server: ar_manager
+model: dataStream
+switch: true
+request:
+  method: DELETE
+  url_path: /manager/datastream/${streamId}$
+testcases:
+  TestCase1:
+    Description: 正常场景:删除一条任务成功
+    req_body: ''
+    runflag: true
+    verify:
+      AssertType: 0
+      key: success
+      value: 1
+
+  TestCase2:
+    Description: 正常场景:删除一条任务成功
+    url_path: /manager/datastream/${streamId}$
+    req_body: ''
+    runflag: true
+    verify:
+      AssertType: 0
+      key: code
+      value: 3761569796

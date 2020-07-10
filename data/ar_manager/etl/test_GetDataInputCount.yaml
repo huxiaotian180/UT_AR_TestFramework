@@ -1,0 +1,15 @@
+story_description: 获取数据输入项的总数
+server: ar_manager
+model: etl
+switch: false
+request:
+  method: get
+  url_path: /etl/input/count
+testcases:
+  TestCase14:
+    Description: 正常场景:获取数据输入项的总数
+    req_body: ''
+    runflag: true
+    verify:
+      AssertType: 0
+      value: 200

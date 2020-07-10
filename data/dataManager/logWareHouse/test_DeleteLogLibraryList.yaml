@@ -1,0 +1,16 @@
+story_description: 删除多个日志库
+server: dataManager
+model: logWareHouse
+switch: false
+request:
+  method: DELETE
+  url_path: /api/v1/dataManager/logWareHouse${wareHouseID}$=id1,id2,id3
+
+testcases:
+  TestCase30:
+    Description: 正常场景:删除多个日志库成功
+    req_body: ''
+    runflag: true
+    verify:
+      AssertType: 0
+      value: 200

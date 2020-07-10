@@ -1,0 +1,1 @@
+{"model": "Iptables", "request": {"method": "get", "url_path": "/v1/iptables/contain"}, "server": "ar_manager", "story_description": "白名单包含IP", "switch": true, "testcases": {"TestCase1": {"Description": "正常场景:白名单包含IP", "req_body": "", "runflag": true, "verify": {"AssertType": 0, "value": 200}}}}

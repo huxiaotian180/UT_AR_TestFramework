@@ -1,0 +1,24 @@
+story_description: 删除数据输入项
+server: ar_manager
+model: etl
+switch: true
+request:
+  method: delete
+  url_path: ''
+testcases:
+  TestCase1:
+    Description: 正常场景:id存在
+    url_path: /etl/input/${etcId}$
+    req_body: ''
+    runflag: true
+    verify:
+      AssertType: 0
+      value: 200
+  TestCase12:
+    Description: 异常场景:id不存在
+    url_path: /etl/input/${UUid}$
+    req_body: ''
+    runflag: true
+    verify:
+      AssertType: 0
+      value: 202

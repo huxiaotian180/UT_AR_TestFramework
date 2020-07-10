@@ -1,0 +1,103 @@
+model: UserManagerment
+request:
+  method: POST
+  url_path: /manager/user
+server: ar_manager
+story_description: 创建一个新的用户
+switch: false
+testcases:
+  TestCase1:
+    Description: 正常场景:新建用户成功
+    req_body: ''
+    runflag: true
+    verify:
+      AssertType: 0
+      value: 200
+
+  TestCase10:
+    Description: 异常场景:当前显示名不允许使用，新建用户失败
+    req_body: ''
+    runflag: true
+    verify:
+      AssertType: 0
+      value: 200
+
+  TestCase11:
+    Description: 异常场景:当前显示名不合法，新建用户失败
+    req_body: ''
+    runflag: true
+    verify:
+      AssertType: 0
+      value: 200
+
+  TestCase12:
+    Description: 异常场景:用户显示名已存在，新建用户失败
+    req_body: ''
+    runflag: true
+    verify:
+      AssertType: 0
+      value: 200
+
+  TestCase2:
+    Description: 异常场景:邮箱格式错误，新建用户失败
+    req_body: ''
+    runflag: true
+    verify:
+      AssertType: 0
+      value: 200
+
+  TestCase3:
+    Description: 异常场景:用户状态参数非法，新建用户失败
+    req_body: ''
+    runflag: true
+    verify:
+      AssertType: 0
+      value: 200
+
+  TestCase4:
+    Description: 异常场景:角色名无效，新建用户失败
+    req_body: ''
+    runflag: true
+    verify:
+      AssertType: 0
+      value: 200
+
+  TestCase5:
+    Description: 异常场景:登录名超过32个字符，新建用户失败
+    req_body: ''
+    runflag: true
+    verify:
+      AssertType: 0
+      value: 200
+
+  TestCase6:
+    Description: 异常场景:当前用户名不允许使用，新建用户失败
+    req_body: ''
+    runflag: true
+    verify:
+      AssertType: 0
+      value: 200
+
+  TestCase7:
+    Description: 异常场景:当前用户名不合法，新建用户失败
+    req_body: ''
+    runflag: true
+    verify:
+      AssertType: 0
+      value: 200
+
+  TestCase8:
+    Description: 异常场景:用户登录名已存在，新建用户失败
+    req_body: ''
+    runflag: true
+    verify:
+      AssertType: 0
+      value: 200
+
+  TestCase9:
+    Description: 异常场景:显示名超过32个字符，新建用户失败
+    req_body: ''
+    runflag: true
+    verify:
+      AssertType: 0
+      value: 200

@@ -1,0 +1,141 @@
+story_description: 创建日志库
+server: dataManager
+model: logWareHouse
+switch: false
+request:
+  method: POST
+  url_path: /api/v1/dataManager/logWareHouse
+body:
+  dataType: ${dataType}$
+  eachShardSize:
+    GB: 90
+  fullTextSearch: 1
+  hotWarmTransferPlan:
+    executePlan:
+      days: 1
+      hour: '00'
+      minute: '00'
+      timeUnit: days
+    transReplicas: 1
+  indexCreateRule: 4
+  lifeCycleSetting:
+    year: 999
+  metaField:
+  - field: '1'
+    type: text
+  numberOfReplicas: 1
+  numberOfShards: 2
+  wareHouseName: 日志库名${AnyRobotNameID}$
+
+testcases:
+  TestCase1:
+    Description: 正常场景:创建日志库成功
+    req_body: ''
+    runflag: true
+    verify:
+      AssertType: 0
+      value: 200
+
+  TestCase10:
+    Description: 异常场景:日志库类型异常存在特殊字符,创建日志库失败
+    req_body: ''
+    runflag: true
+    verify:
+      AssertType: 0
+      value: 200
+
+  TestCase11:
+    Description: 异常场景:日志库类型异常存在特殊字符,创建日志库失败
+    req_body: ''
+    runflag: true
+    verify:
+      AssertType: 0
+      value: 200
+
+  TestCase12:
+    Description: 异常场景:请求参数错误,创建日志库失败
+    req_body: ''
+    runflag: true
+    verify:
+      AssertType: 0
+      value: 200
+
+  TestCase13:
+    Description: 异常场景:索引创建规则异常,创建日志库失败
+    req_body: ''
+    runflag: true
+    verify:
+      AssertType: 0
+      value: 200
+
+  TestCase14:
+    Description: 异常场景:分片数值异常,创建日志库失败
+    req_body: ''
+    runflag: true
+    verify:
+      AssertType: 0
+      value: 200
+
+  TestCase2:
+    Description: 异常场景:副本数值异常,创建日志库失败
+    req_body: ''
+    runflag: true
+    verify:
+      AssertType: 0
+      value: 200
+
+  TestCase3:
+    Description: 异常场景:分片大小值异常,创建日志库失败
+    req_body: ''
+    runflag: true
+    verify:
+      AssertType: 0
+      value: 200
+
+  TestCase4:
+    Description: 异常场景:热温迁移副本数值异常,创建日志库失败
+    req_body: ''
+    runflag: true
+    verify:
+      AssertType: 0
+      value: 200
+
+  TestCase5:
+    Description: 异常场景:生命周期设置异常,创建日志库失败
+    req_body: ''
+    runflag: true
+    verify:
+      AssertType: 0
+      value: 200
+
+  TestCase6:
+    Description: 异常场景:修改LOGSTASH_FILTER失败
+    req_body: ''
+    runflag: true
+    verify:
+      AssertType: 0
+      value: 200
+
+  TestCase7:
+    Description: 异常场景:日志库名称超过40字节,创建日志库失败
+    req_body: ''
+    runflag: true
+    verify:
+      AssertType: 0
+      value: 200
+
+  TestCase8:
+    Description: 异常场景:日志库名称已存在,创建日志库失败
+    req_body: ''
+    runflag: true
+    verify:
+      AssertType: 0
+      value: 200
+
+  TestCase9:
+    Description: 异常场景:日志库类型名为空,创建日志库失败
+    req_body: ''
+    runflag: true
+    verify:
+      AssertType: 0
+      value: 200

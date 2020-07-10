@@ -1,0 +1,15 @@
+story_description: 获取ES中所有数据类型
+server: ar_manager
+model: dataStream
+switch: false
+request:
+  method: GET
+  url_path: /stream_manager/export_to_kafka/es_index?token=index_type
+testcases:
+  TestCase13:
+    Description: 正常场景:获取ES中所有数据类型
+    req_body: ''
+    runflag: true
+    verify:
+      AssertType: 0
+      value: 200

@@ -1,0 +1,61 @@
+model: AgentConfigTemplate
+request:
+  method: get
+  url_path: ''
+server: ar_manager
+story_description: 批量获取Agent配置模板
+switch: true
+testcases:
+  TestCase1:
+    Description: 正常场景:批量获取Agent配置模板
+    url_path: /manager/agents/config/template/list?start=0&limit=10&sort_key=latestUpdateTime&reverse=1
+    req_body: ''
+    runflag: true
+    verify:
+      AssertType: 0
+      value: 200
+
+  TestCase2:
+    Description: 正常场景:批量获取Agent配置模板
+    url_path: /manager/agents/config/template/list?start=0&limit=100&sort_key=latestUpdateTime&reverse=1
+    req_body: ''
+    runflag: true
+    verify:
+      AssertType: 0
+      value: 200
+
+  TestCase3:
+    Description: 正常场景:批量获取Agent配置模板
+    url_path: /manager/agents/config/template/list?start=0&limit=10&sort_key=latestUpdateTime&reverse=1&agent=Filebeat
+    req_body: ''
+    runflag: true
+    verify:
+      AssertType: 0
+      value: 200
+
+  TestCase4:
+    Description: 正常场景:批量获取Agent配置模板
+    url_path: /manager/agents/config/template/list?start=0&limit=10&sort_key=latestUpdateTime&reverse=1&category=input
+    req_body: ''
+    runflag: true
+    verify:
+      AssertType: 0
+      value: 200
+
+  TestCase5:
+    Description: 正常场景:批量获取Agent配置模板
+    url_path: /manager/agents/config/template/list?start=0&limit=10&sort_key=latestUpdateTime&reverse=1&name=Apache
+    req_body: ''
+    runflag: true
+    verify:
+      AssertType: 0
+      value: 200
+
+  TestCase6:
+    Description: 正常场景:批量获取Agent配置模板
+    url_path: /manager/agents/config/template/list?start=0&limit=10&category=input&agent=Filebeat&name=Apache&sort_key=latestUpdateTime&reverse=1
+    req_body: ''
+    runflag: true
+    verify:
+      AssertType: 0
+      value: 200

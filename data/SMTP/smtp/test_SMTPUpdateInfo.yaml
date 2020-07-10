@@ -1,0 +1,154 @@
+story_description: 修改SMTP配置信息
+server: SMTP
+model: smtp
+switch: false
+request:
+  method: put
+  url_path: /manager/smtp
+body:
+  host: spesmtp.aishu.cn
+  port: 25
+  user: xiong.yuanzhou@aishu.cn
+  password: Xyz2017999
+  
+testcases:
+  TestCase1:
+    Description: 正常场景：修改SMTP配置信息成功
+    req_body: ''
+    runflag: true
+    verify:
+      AssertType: 0
+      value: 200
+  TestCase2:
+    Description: 异常场景：SMTP服务器地址无效
+    req_body: ''
+    runflag: true
+    verify:
+      AssertType: 0
+      value: 200
+  TestCase3:
+    Description: 异常场景：host=123
+    req_body: ''
+    runflag: true
+    verify:
+      AssertType: 0
+      value: 200
+  TestCase4:
+    Description: 异常场景：host=[]/\//\\
+    req_body: ''
+    runflag: true
+    verify:
+      AssertType: 0
+      value: 200
+  TestCase5:
+    Description: 异常场景：host=测试
+    req_body: ''
+    runflag: true
+    verify:
+      AssertType: 0
+      value: 200
+  TestCase6:
+    Description: 异常场景：host=！@#￥%……&*（）
+    req_body: ''
+    runflag: true
+    verify:
+      AssertType: 0
+      value: 200
+  TestCase7:
+    Description: 异常场景：port=26
+    req_body: ''
+    runflag: true
+    verify:
+      AssertType: 0
+      value: 200
+  TestCase8:
+    Description: 异常场景：port=25.5
+    req_body: ''
+    runflag: true
+    verify:
+      AssertType: 0
+      value: 200
+  TestCase9:
+    Description: 异常场景：port=0
+    req_body: ''
+    runflag: true
+    verify:
+      AssertType: 0
+      value: 200
+  TestCase10:
+    Description: 异常场景：port=-0.1
+    req_body: ''
+    runflag: true
+    verify:
+      AssertType: 0
+      value: 200
+  TestCase11:
+    Description: 异常场景：port=-1
+    req_body: ''
+    runflag: true
+    verify:
+      AssertType: 0
+      value: 200
+  TestCase12:
+    Description: 异常场景：port=[]/\//\\
+    req_body: ''
+    runflag: true
+    verify:
+      AssertType: 0
+      value: 200
+  TestCase13:
+    Description: 异常场景：port=测试
+    req_body: ''
+    runflag: true
+    verify:
+      AssertType: 0
+      value: 200
+  TestCase14:
+    Description: 异常场景：port=！@#￥%……&*（）
+    req_body: ''
+    runflag: true
+    verify:
+      AssertType: 0
+      value: 200
+  TestCase15:
+    Description: 异常场景：user=sfdsfsdf@aishu.cn
+    req_body: ''
+    runflag: true
+    verify:
+      AssertType: 0
+      value: 200
+  TestCase16:
+    Description: 异常场景：user=123
+    req_body: ''
+    runflag: true
+    verify:
+      AssertType: 0
+      value: 200
+  TestCase17:
+    Description: 异常场景：user=[]/\//\\
+    req_body: ''
+    runflag: true
+    verify:
+      AssertType: 0
+      value: 200
+  TestCase18:
+    Description: 异常场景：user=测试
+    req_body: ''
+    runflag: true
+    verify:
+      AssertType: 0
+      value: 200
+  TestCase19:
+    Description: 异常场景：user=！@#￥%……&*（）
+    req_body: ''
+    runflag: true
+    verify:
+      AssertType: 0
+      value: 200
+  TestCase20:
+    Description: 异常场景：password=错误密码
+    req_body: ''
+    runflag: true
+    verify:
+      AssertType: 0
+      value: 200

@@ -1,0 +1,1 @@
+{"story_description": "获取日志库元数据信息", "server": "dataManager", "model": "logWareHouse", "switch": false, "request": {"method": "GET", "url_path": "/api/v1/dataManager/logWareHouse/${type}$/metaField"}, "body": "", "testcases": {"TestCase40": {"Description": "正常场景:获取日志库元数据信息成功", "req_body": "", "runflag": true, "verify": {"AssertType": 0}}}}

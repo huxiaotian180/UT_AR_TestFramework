@@ -1,0 +1,17 @@
+# Created by .ignore support plugin (hsz.mobi)
+### Example user template template
+### Example user template
+
+# IntelliJ project files
+at_alsv_pro/.idea/SearchImage.iml
+at_alsv_pro/.idea/misc.xml
+at_alsv_pro/.idea/workspace.xml
+at_alsv_pro/.idea/vcs.xml
+at_alsv_pro/.idea
+
+.idea
+*.iml
+out
+gen
+__pycache__
+__init__.cpython*

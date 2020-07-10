@@ -1,0 +1,35 @@
+model: Iptables
+request:
+  method: post
+  url_path: /v1/iptables/switch/on
+server: ar_manager
+story_description: 白名单限制开关on
+switch: true
+body:
+  status: 0
+testcases:
+  TestCase1:
+    Description: 正常场景:更改白名单
+    req_body: ''
+    runflag: true
+    verify:
+      AssertType: 0
+      value: 200
+
+  TestCase2:
+    Description: 异常场景:更改白名单,参数status为空
+    req_body:
+      status: ''
+    runflag: true
+    verify:
+      AssertType: 0
+      value: 200
+
+  TestCase3:
+    Description: 异常场景:更改白名单,参数status非法
+    req_body:
+      status: a
+    runflag: true
+    verify:
+      AssertType: 0
+      value: 200

@@ -1,0 +1,37 @@
+model: Role
+request:
+  method: post
+  url_path: /manager/role
+server: ar_manager
+story_description: 创建角色
+switch: false
+body:
+  defaultLogGroupID: fe5b7f96-443a-11e7-a467-000c29253e90
+  description: '123123123'
+  permissions:
+  - checked: false
+    isLeaf: 1
+    name: 主页
+    parentId: ''
+    permissionId: ID_MAINPAGE
+  - checked: true
+    isLeaf: 0
+    name: 搜索
+    parentId: ''
+    permissionId: ID_SEARCH
+  resource:
+    dashboard:
+      dashboardId: []
+      mainPageId: ''
+    jobTemplate: []
+    logGroup: []
+  roleName: wsed
+
+testcases:
+  TestCase1:
+    Description: 正常场景:创建角色
+    req_body: ''
+    runflag: true
+    verify:
+      AssertType: 0
+      value: 200

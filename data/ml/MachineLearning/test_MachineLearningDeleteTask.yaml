@@ -1,0 +1,72 @@
+story_description: 删除机器学习任务
+server: ml
+model: MachineLearning
+switch: false
+request:
+  method: delete
+  url_path: /ml/${MLID}$/delete?$deleteRecords=1
+
+testcases:
+  TestCase1:
+    Description: 正常场景:删除单维度异常检测任务成功
+    req_body: ''
+    runflag: true
+    verify:
+      AssertType: 0
+      value: 200
+
+  TestCase2:
+    Description: 异常场景:删除单维度异常检测任务失败
+    req_body: ''
+    runflag: true
+    verify:
+      AssertType: 0
+      value: 200
+
+  TestCase3:
+    Description: 正常场景:删除多维度异常检测任务成功
+    req_body: ''
+    runflag: true
+    verify:
+      AssertType: 0
+      value: 200
+
+  TestCase4:
+    Description: 异常场景:删除多维度异常检测任务失败
+    req_body: ''
+    runflag: true
+    verify:
+      AssertType: 0
+      value: 200
+
+  TestCase5:
+    Description: 正常场景:删除时间序列预测任务成功
+    req_body: ''
+    runflag: true
+    verify:
+      AssertType: 0
+      value: 200
+
+  TestCase6:
+    Description: 异常场景:删除时间序列预测任务失败
+    req_body: ''
+    runflag: true
+    verify:
+      AssertType: 0
+      value: 200
+
+  TestCase7:
+    Description: 正常场景:删除根因分析任务成功
+    req_body: ''
+    runflag: true
+    verify:
+      AssertType: 0
+      value: 200
+
+  TestCase8:
+    Description: 异常场景:删除根因分析任务失败
+    req_body: ''
+    runflag: true
+    verify:
+      AssertType: 0
+      value: 200

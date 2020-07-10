@@ -1,0 +1,37 @@
+story_description: 获取从根节点到当前日志分组的路径简单信息
+server: ar_manager
+model: LogGroup
+switch: true
+request:
+  method: GET
+  url_path: ''
+  header:
+    user: ${UserID}$
+
+testcases:
+  TestCase1:
+    Description: 正常场景:获取从根节点到当前日志分组的路径简单信息成功
+    url_path: /manager/loggroup/${LogGroupIdPare}$/paths?simpleInfo=1
+    req_body: ''
+    runflag: true
+    verify:
+      AssertType: 0
+      value: 200
+
+  TestCase2:
+    Description: 正常场景:获取从根节点到当前日志分组的路径详细信息成功
+    url_path: /manager/loggroup/${LogGroupIdPare}$/paths?simpleInfo=0
+    req_body: ''
+    runflag: true
+    verify:
+      AssertType: 0
+      value: 200
+
+  TestCase3:
+    Description: 异常场景:分组不存在,获取从根节点到当前日志分组的路径信息
+    url_path: /manager/loggroup/${UUid}$/paths?simpleInfo=1
+    req_body: ''
+    runflag: true
+    verify:
+      AssertType: 0
+      value: 202

@@ -1,0 +1,16 @@
+model: AgentJob
+request:
+  method: delete
+  url_path: /manager/agents/job/template/${JobTemplateID}$
+server: ar_manager
+story_description: 删除Agent任务模板
+switch: true
+testcases:
+  TestCase1:
+    Description: 正常场景:删除Agent任务模板
+    req_body: ''
+    runflag: true
+    verify:
+      AssertType: 3
+      id: ${JobTemplateID}$
+      db: AgentJobTemplate

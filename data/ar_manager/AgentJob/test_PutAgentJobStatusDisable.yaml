@@ -1,0 +1,24 @@
+model: AgentJob
+request:
+  method: put
+  url_path: /manager/agents/job/${JobID}$?action=disable
+server: ar_manager
+story_description: 设置Agent任务响应操作
+switch: true
+testcases:
+  TestCase1:
+    Description: 正常场景:设置Agent任务响应操作,修改转态为disable
+    req_body: ''
+    runflag: true
+    verify:
+      AssertType: 0
+      value: 200
+
+  TestCase2:
+    Description: 异常场景:设置Agent任务响应操作,修改转态为非法状态
+    url_path: /manager/agents/job/${JobID}$?action=disable123
+    req_body: ''
+    runflag: true
+    verify:
+      AssertType: 0
+      value: 202

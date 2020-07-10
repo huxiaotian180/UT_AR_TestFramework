@@ -1,0 +1,60 @@
+model: Iptables
+request:
+  method: post
+  url_path: /v1/iptables/create
+server: ar_manager
+story_description: 添加白名单
+switch: true
+body:
+  ip: ${IpVR}$
+  label: anyrobot${AnyRobotNameID}$
+testcases:
+  TestCase1:
+    Description: 正常场景:添加白名单
+    req_body: ''
+    runflag: true
+    verify:
+      AssertType: 2
+      key: label
+      value: true
+
+  TestCase2:
+    Description: 异常场景:添加白名单IP参数为空
+    req_body:
+      ip: ''
+    runflag: true
+    verify:
+      AssertType: 2
+      key: label
+      value: false
+
+  TestCase4:
+    Description: 异常场景:添加白名单IP参数非法不符合IP规则
+    req_body:
+      ip: ${IPError}$
+    runflag: true
+    verify:
+      AssertType: 1
+      key: code
+      value: 3760128005
+
+  TestCase5:
+    Description: 异常场景:添加白名单label参数为空
+    req_body:
+      label: ''
+    runflag: true
+    verify:
+      AssertType: 2
+      key: label
+      value: false
+
+  TestCase6:
+    Description: 异常场景:添加白名单IP输入IP冲突
+    isOperationDb: ip
+    req_body: ''
+    runflag: true
+    verify:
+      AssertType: 1
+      key: code
+      value: 3760128006
+

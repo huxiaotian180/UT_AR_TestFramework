@@ -1,0 +1,261 @@
+story_description: 编辑数据流任务
+server: ar_manager
+model: dataStream
+switch: true
+request:
+  method: PUT
+  url_path: /manager/datastream/${streamId}$
+body:
+  lifeCycle:
+    day: 6
+  name: AnyShare操作日志数据流任务${AnyRobotNameID}$
+  sinkType: kafka
+  status: running
+  switch: 1
+  sourceType: elasticsearch
+  sinkConfig:
+    topic: topic_${AnyRobotNameID}$
+    type: new
+  schedule:
+    timeInterval: 2
+    timeUnit: h
+    type: interval
+  type: general
+  description: AnyShare操作日志数据流任务
+  sourceConfig:
+    searchCondition:
+      type: manual
+      indexList:
+      - ${indexList}$
+      fieldList: []
+      indexListDisplay:
+      - ${indexListDisplay}
+      manual:
+        type: '*'
+        year: '*'
+        month: '*'
+
+testcases:
+  TestCase1:
+    Description: 异常场景:编辑数据流任务,day参数非法
+    req_body:
+      day: f
+    runflag: true
+    verify:
+      AssertType: 4
+      id: ${streamId}$
+      key: lifeCycle
+      db: DataStream,lifeCycle
+      value: false
+
+  TestCase2:
+    Description: 异常场景:编辑数据流任务,day参数为空
+    req_body:
+      day: ''
+    runflag: true
+    verify:
+      AssertType: 4
+      id: ${streamId}$
+      key: lifeCycle
+      db: DataStream,lifeCycle
+      value: false
+
+  TestCase3:
+    Description: 异常场景:编辑数据流任务,status参数为空
+    req_body:
+      status: ''
+    runflag: true
+    verify:
+      AssertType: 4
+      id: ${streamId}$
+      key: status
+      db: DataStream,status
+      value: false
+
+  TestCase4:
+    Description: 异常场景:编辑数据流任务,status参数值错误
+    req_body:
+      status: runing123
+    runflag: true
+    verify:
+      AssertType: 4
+      id: ${streamId}$
+      key: status
+      db: DataStream,status
+      value: false
+
+  TestCase5:
+    Description: 异常场景:编辑数据流任务,switch参数值错误
+    req_body:
+      switch: abc
+    runflag: true
+    verify:
+      AssertType: 4
+      id: ${streamId}$
+      key: switch
+      db: DataStream,switch
+      value: false
+
+  TestCase6:
+    Description: 异常场景:编辑数据流任务,switch参数值为空
+    req_body:
+      switch: ''
+    runflag: true
+    verify:
+      AssertType: 4
+      id: ${streamId}$
+      key: switch
+      db: DataStream,switch
+      value: false
+
+  TestCase7:
+    Description: 异常场景:编辑数据流任务,sourceType参数值为空
+    req_body:
+      sourceType: ''
+    runflag: true
+    verify:
+      AssertType: 4
+      id: ${streamId}$
+      key: sourceType
+      db: DataStream,sourceType
+      value: false
+
+  TestCase8:
+    Description: 异常场景:编辑数据流任务,timeInterval参数值为空
+    req_body:
+      timeInterval: ''
+    runflag: true
+    verify:
+      AssertType: 4
+      id: ${streamId}$
+      key: timeInterval
+      db: DataStream,schedule
+      value: false
+
+  TestCase9:
+    Description: 异常场景:编辑数据流任务,timeInterval参数值非法
+    req_body:
+      timeInterval: abc
+    runflag: true
+    verify:
+      AssertType: 4
+      id: ${streamId}$
+      key: timeInterval
+      db: DataStream,schedule
+      value: false
+
+  TestCase10:
+    Description: 异常场景:编辑数据流任务,timeUnit参数值非法
+    req_body:
+      timeUnit: abc
+    runflag: true
+    verify:
+      AssertType: 4
+      id: ${streamId}$
+      key: timeUnit
+      db: DataStream,schedule
+      value: false
+
+  TestCase11:
+    Description: 异常场景:编辑数据流任务,timeUnit参数值为空
+    req_body:
+      timeUnit: ''
+    runflag: true
+    verify:
+      AssertType: 4
+      id: ${streamId}$
+      key: timeUnit
+      db: DataStream,schedule
+      value: false
+
+  TestCase12:
+    Description: 异常场景:编辑数据流任务,type参数值为空
+    req_body:
+      schedule:
+        timeInterval: 2
+        timeUnit: h
+        type: ''
+    runflag: true
+    verify:
+      AssertType: 4
+      id: ${streamId}$
+      key: type
+      db: DataStream,schedule
+      value: false
+
+  TestCase13:
+    Description: 异常场景:编辑数据流任务,type参数值错误
+    req_body:
+      schedule:
+        timeInterval: 2
+        timeUnit: h
+        type: abcd
+    runflag: true
+    verify:
+      AssertType: 4
+      id: ${streamId}$
+      key: type
+      db: DataStream,schedule
+      value: false
+
+  TestCase14:
+    Description: 异常场景:编辑数据流任务,indexList参数值错误
+    req_body:
+      indexList:
+      - 2d7c51b6xndhv
+    runflag: true
+    verify:
+      AssertType: 4
+      id: ${streamId}$
+      key: indexList
+      db: DataStream,sourceConfig
+      value: false
+
+  TestCase15:
+    Description: 异常场景:编辑数据流任务,indexList参数类型错误
+    req_body:
+      indexList: ${indexList}$
+    runflag: true
+    verify:
+      AssertType: 4
+      id: ${streamId}$
+      key: indexList
+      db: DataStream,sourceConfig
+      value: false
+
+  TestCase16:
+    Description: 异常场景:编辑数据流任务,indexListDisplay参数类型错误
+    req_body:
+      indexListDisplay: ${indexListDisplay}$
+    runflag: true
+    verify:
+      AssertType: 4
+      id: ${streamId}$
+      key: indexList
+      db: DataStream,sourceConfig
+      value: false
+
+  TestCase17:
+    Description: 异常场景:编辑数据流任务,indexListDisplay参数值错误
+    req_body:
+      indexListDisplay:
+      - AnyShare访问日志-${AnyRobotNameID}$
+    runflag: true
+    verify:
+      AssertType: 4
+      id: ${streamId}$
+      key: indexList
+      db: DataStream,sourceConfig
+      value: false
+
+  TestCase18:
+    Description: 异常场景:编辑数据流任务,topic参数值为空
+    req_body:
+      topic: ''
+    runflag: true
+    verify:
+      AssertType: 4
+      id: ${streamId}$
+      key: topic
+      db: DataStream,sinkConfig
+      value: false

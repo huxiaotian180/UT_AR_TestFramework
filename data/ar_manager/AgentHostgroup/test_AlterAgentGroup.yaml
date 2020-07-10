@@ -1,0 +1,137 @@
+model: AgentHostgroup
+request:
+  method: put
+  url_path: /manager/agents/hostgroup/${GroupID}$
+server: ar_manager
+story_description: 修改Agent主机组
+switch: true
+body:
+  description: 修改主机组信息
+  hosts:
+  - ${HostID}$
+  name: Apache修改主机组信息${AnyRobotNameID}$
+  tagsID:
+  - 1
+  templateIds: []
+  whitelist:
+  - Oracle
+testcases:
+  TestCase1:
+    Description: 正常场景:修改Agent主机组,修改主机名和Host
+    req_body: ''
+    runflag: true
+    verify:
+      AssertType: 0
+      value: 200
+
+  TestCase2:
+    Description: 异常场景:修改主机组信息,whitelist参数值与便签ID不对应
+    req_body:
+      whitelist:
+      - Oracle123
+    runflag: true
+    verify:
+      AssertType: 4
+      id: ${GroupID}$
+      key: whitelist
+      db: AgentGroup,whitelist
+      value: false
+
+  TestCase3:
+    Description: 异常场景:修改主机组信息,whitelist参数类型错误
+    req_body:
+      whitelist: Oracle123
+    runflag: true
+    verify:
+      AssertType: 4
+      id: ${GroupID}$
+      key: whitelist
+      db: AgentGroup,whitelist
+      value: false
+
+  TestCase3-1:
+    Description: 异常场景:修改主机组信息,whitelist参数为空
+    req_body:
+      whitelist: []
+    runflag: true
+    verify:
+      AssertType: 4
+      id: ${GroupID}$
+      key: whitelist
+      db: AgentGroup,whitelist
+      value: false
+
+  TestCase4:
+    Description: 异常场景:修改主机组信息,tagsID参数值错误
+    req_body:
+      tagsID:
+      - 23
+    runflag: true
+    verify:
+      AssertType: 4
+      id: ${GroupID}$
+      key: tagsID
+      db: AgentGroup,tagsID
+      value: false
+
+  TestCase4-1:
+    Description: 异常场景:修改主机组信息,tagsID参数类型错误
+    req_body:
+      tagsID: 23
+    runflag: true
+    verify:
+      AssertType: 4
+      id: ${GroupID}$
+      key: tagsID
+      db: AgentGroup,tagsID
+      value: false
+
+  TestCase4-2:
+    Description: 异常场景:修改主机组信息,tagsID参数为空
+    req_body:
+      tagsID: []
+    runflag: true
+    verify:
+      AssertType: 4
+      id: ${GroupID}$
+      key: tagsID
+      db: AgentGroup,tagsID
+      value: false
+
+  TestCase5:
+    Description: 异常场景:修改主机组信息,主机组名称为空
+    req_body:
+      name: ''
+    runflag: true
+    verify:
+      AssertType: 4
+      id: ${GroupID}$
+      key: name
+      db: AgentGroup,name
+      value: false
+
+
+  TestCase6:
+    Description: 异常场景:修改主机组信息,hosts参数不存在
+    req_body:
+      hosts:
+      - ${UUid}$
+    runflag: true
+    verify:
+      AssertType: 4
+      id: ${GroupID}$
+      key: name
+      db: AgentGroup,name
+      value: false
+
+  TestCase7:
+    Description: 异常场景:修改主机组信息,hosts参数类型错误
+    req_body:
+      hosts: ${HostID}$
+    runflag: true
+    verify:
+      AssertType: 4
+      id: ${GroupID}$
+      key: name
+      db: AgentGroup,name
+      value: false

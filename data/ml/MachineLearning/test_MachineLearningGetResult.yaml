@@ -1,0 +1,16 @@
+story_description: 获取机器学习计算结果
+server: ml
+model: MachineLearning
+switch: false
+request:
+  method: get
+  url_path: /ml/fetch/${MLID}$
+
+testcases:
+  TestCase1:
+    Description: 正常场景:获取机器学习计算结果成功
+    req_body: ''
+    runflag: true
+    verify:
+      AssertType: 0
+      value: 200

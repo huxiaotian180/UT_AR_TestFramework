@@ -1,0 +1,1 @@
+{"model": "AgentHost", "request": {"method": "get", "url_path": "/manager/agents/host/${HostID}$?includeDetail=false"}, "server": "ar_manager", "story_description": "获取Agent主机信息", "switch": true, "testcases": {"TestCase1": {"Description": "正常场景:获取Agent主机信息", "req_body": "", "runflag": true, "verify": {"AssertType": 0, "value": 200}}}}

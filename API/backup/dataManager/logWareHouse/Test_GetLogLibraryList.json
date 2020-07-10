@@ -1,0 +1,1 @@
+{"story_description": "获取日志库列表", "server": "dataManager", "model": "logWareHouse", "switch": false, "request": {"method": "GET", "url_path": "/api/v1/dataManager/logWareHouse"}, "body": "", "testcases": {"TestCase31": {"Description": "正常场景:获取日志库列表成功", "req_body": "", "runflag": true, "verify": {"AssertType": 0}}}}

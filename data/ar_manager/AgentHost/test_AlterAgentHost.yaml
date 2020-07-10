@@ -1,0 +1,210 @@
+model: AgentHost
+request:
+  method: put
+  url_path: /manager/agents/host/${HostID}$/alter
+server: ar_manager
+story_description: 修改主机信息
+switch: true
+body:
+  auths: []
+  description: 修改主机信息
+  ip: ${IpVR}$
+  memoryLimit: 300
+  name: 修改Apache主机${AnyRobotNameID}$
+  system: ''
+  systemType: auto
+  tags:
+  - Oracle
+  tagsID:
+  - 1
+testcases:
+  TestCase1:
+    Description: 正常场景:修改主机信息,修改主机名和主机IP
+    req_body: ''
+    runflag: true
+    verify:
+      AssertType: 4
+      id: ${HostID}$
+      key: name
+      db: AgentHost,name
+      value: true
+
+  TestCase10:
+    Description: 异常场景:修改主机信息,标签参数id和name不对应
+    req_body:
+      tagsID:
+      - 3
+    runflag: true
+    verify:
+      AssertType: 4
+      id: ${HostID}$
+      key: tagsID
+      db: AgentHost,tagsID
+      value: false
+
+  TestCase3:
+    Description: 异常场景:修改主机信息,主机IP已存在
+    isOperationDb: ip
+    req_body: ''
+    runflag: true
+    verify:
+      AssertType: 1
+      key: code
+      value: 3760193540
+
+  TestCase4:
+    Description: 异常场景:修改主机信息,主机名已存在
+    isOperationDb: name
+    req_body: ''
+    runflag: true
+    verify:
+      AssertType: 1
+      key: code
+      value: 3760193541
+
+  TestCase5:
+    Description: 异常场景:修改主机信息,主机名为空
+    req_body:
+      name: ''
+    runflag: true
+    verify:
+      AssertType: 4
+      id: ${HostID}$
+      key: name
+      db: AgentHost,name
+      value: false
+
+  TestCase6:
+    Description: 异常场景:修改主机信息,主机IP为空
+    req_body:
+      ip: ''
+    runflag: true
+    verify:
+      AssertType: 4
+      id: ${HostID}$
+      key: ip
+      db: AgentHost,ip
+      value: false
+
+  TestCase7:
+    Description: 异常场景:修改主机信息,内存参数为空
+    req_body:
+      memoryLimit: ''
+    runflag: true
+    verify:
+      AssertType: 4
+      id: ${HostID}$
+      key: memoryLimit
+      db: AgentHost,memoryLimit
+      value: false
+
+  TestCase8:
+    Description: 异常场景:修改主机信息,内存参数错误
+    req_body:
+      memoryLimit: abc
+    runflag: true
+    verify:
+      AssertType: 4
+      id: ${HostID}$
+      key: memoryLimit
+      db: AgentHost,memoryLimit
+      value: false
+
+  TestCase8-1:
+    Description: 异常场景:修改主机信息,内存参数为0
+    req_body:
+      memoryLimit: 0
+    runflag: true
+    verify:
+      AssertType: 4
+      id: ${HostID}$
+      key: memoryLimit
+      db: AgentHost,memoryLimit
+      value: false
+
+  TestCase8-2:
+    Description: 异常场景:修改主机信息,内存参数超大
+    req_body:
+      memoryLimit: 800000000000000
+    runflag: true
+    verify:
+      AssertType: 4
+      id: ${HostID}$
+      key: memoryLimit
+      db: AgentHost,memoryLimit
+      value: false
+
+  TestCase9:
+    Description: 异常场景:修改主机信息,tags标签参数错误
+    req_body:
+      tags:
+      - Oracle123
+    runflag: true
+    verify:
+      AssertType: 4
+      id: ${HostID}$
+      key: tags
+      db: AgentHost,tags
+      value: false
+
+  TestCase9-1:
+    Description: 异常场景:修改主机信息,tags标签参数类型错误
+    req_body:
+      tags: Oracle
+    runflag: true
+    verify:
+      AssertType: 4
+      id: ${HostID}$
+      key: tags
+      db: AgentHost,tags
+      value: false
+
+  TestCase11:
+    Description: 异常场景:修改主机信息,tags标签参数为空
+    req_body:
+      tags: []
+    runflag: true
+    verify:
+      AssertType: 4
+      id: ${HostID}$
+      key: tags
+      db: AgentHost,tags
+      value: false
+
+  TestCase12:
+    Description: 异常场景:修改主机信息,tags标签参数为空
+    req_body:
+      tagsID: ''
+    runflag: true
+    verify:
+      AssertType: 4
+      id: ${HostID}$
+      key: tags
+      db: AgentHost,tags
+      value: false
+
+  TestCase13:
+    Description: 异常场景:修改主机信息,tagsID标签参数错误
+    req_body:
+      tagsID:
+      - 1234
+    runflag: true
+    verify:
+      AssertType: 4
+      id: ${HostID}$
+      key: tagsID
+      db: AgentHost,tagsID
+      value: false
+
+
+  TestCase14:
+    Description: 异常场景:修改主机信息,tagsID标签参数类型错误
+    req_body:
+      tagsID: 1
+    runflag: true
+    verify:
+      AssertType: 4
+      id: ${HostID}$
+      key: tagsID
+      db: AgentHost,tagsID
+      value: false

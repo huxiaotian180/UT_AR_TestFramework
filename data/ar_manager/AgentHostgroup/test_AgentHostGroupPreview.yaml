@@ -1,0 +1,97 @@
+model: AgentHostgroup
+request:
+  method: post
+  url_path: /manager/agents/hostgroup/preview/host?start=0&limit=10
+server: ar_manager
+story_description: 预览Agent主机组
+switch: true
+body:
+  hosts:
+  - ${HostID}$
+  whitelist:
+  - Oracle
+testcases:
+  TestCase1:
+    Description: 正常场景:预览Agent主机组
+    req_body: ''
+    runflag: true
+    verify:
+      AssertType: 0
+      value: 200
+
+  TestCase2:
+    Description: 正常场景:预览Agent主机组,hosts主机不存在
+    req_body:
+      hosts:
+      - 46111111-a491-11ea-9b18-0242ac120007
+    runflag: true
+    verify:
+      AssertType: 2
+      key: id
+      value: false
+
+  TestCase3:
+    Description: 正常场景:预览Agent主机组,whitelist参数不存在
+    req_body:
+      whitelist:
+      - Oracle123
+    runflag: true
+    verify:
+      AssertType: 2
+      key: id
+      value: false
+
+  TestCase3-1:
+    Description: 正常场景:预览Agent主机组,whitelist参数类型非法
+    req_body:
+      whitelist: Oracle
+    runflag: true
+    verify:
+      AssertType: 2
+      key: id
+      value: false
+
+  TestCase4:
+    Description: 正常场景:预览Agent主机组,hosts、whitelist参数不存在
+    req_body:
+      hosts:
+      - 46222222-a491-11ea-9b18-0242ac120007
+      whitelist:
+      - Oracle123
+    runflag: true
+    verify:
+      AssertType: 2
+      key: id
+      value: false
+
+  TestCase5:
+    Description: 正常场景:预览Agent主机组,hosts参数类型错误
+    req_body:
+      hosts: 46222222-a491-11ea-9b18-0242ac120007
+    runflag: true
+    verify:
+      AssertType: 2
+      key: id
+      value: false
+
+  TestCase6:
+    Description: 正常场景:预览Agent主机组,hosts、whitelist参数类型错误
+    req_body:
+      hosts: ${HostID}$
+      whitelist: Oracle
+    runflag: true
+    verify:
+      AssertType: 2
+      key: id
+      value: false
+
+  TestCase7:
+    Description: 正常场景:预览Agent主机组,hosts、whitelist参数错误
+    req_body:
+      hosts: d91111111-a493-11ea-9b18-0242ac120007
+      whitelist: Oracle123
+    runflag: true
+    verify:
+      AssertType: 2
+      key: id
+      value: false

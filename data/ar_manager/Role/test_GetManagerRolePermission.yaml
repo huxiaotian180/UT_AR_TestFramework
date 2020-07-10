@@ -1,0 +1,15 @@
+model: Role
+request:
+  method: get
+  url_path: /manager/role/permission
+server: ar_manager
+story_description: 获取权限
+switch: true
+testcases:
+  TestCase1:
+    Description: 正常场景:获取权限
+    req_body: ''
+    runflag: true
+    verify:
+      AssertType: 0
+      value: 200

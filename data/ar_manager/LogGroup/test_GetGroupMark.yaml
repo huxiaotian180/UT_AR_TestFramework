@@ -1,0 +1,28 @@
+story_description: 获取日志分组的过滤条件
+server: ar_manager
+model: LogGroup
+switch: true
+request:
+  method: GET
+  url_path: ''
+  header:
+    user: ${UserID}$
+
+testcases:
+  TestCase1:
+    Description: 正常场景:获取日志分组的过滤条件成功
+    url_path: /manager/loggroup/${LogGroupIdPare}$/queryfilters
+    req_body: ''
+    runflag: true
+    verify:
+      AssertType: 0
+      value: 200
+
+  TestCase2:
+    Description: 异常场景:分组不存在,获取日志分组的过滤条件失败
+    url_path: /manager/loggroup/${UUid}$/queryfilters
+    req_body: ''
+    runflag: true
+    verify:
+      AssertType: 0
+      value: 202

@@ -1,0 +1,32 @@
+story_description: 批量获取数据输入项
+server: ar_manager
+model: etl
+switch: true
+request:
+  method: get
+  url_path: ''
+testcases:
+  TestCase1:
+    Description: 正常场景:批量获取数据输入项
+    url_path: /etl/input/list?start=0&limit=-1
+    req_body: ''
+    runflag: true
+    verify:
+      AssertType: 0
+      value: 200
+  TestCase2:
+    Description: 异常场景:start非法
+    url_path: /etl/input/list?start=a&limit=10
+    req_body: ''
+    runflag: true
+    verify:
+      AssertType: 0
+      value: 202
+  TestCase3:
+    Description: 异常场景:limit非法
+    url_path: /etl/input/list?start=0&limit=a
+    req_body: ''
+    runflag: true
+    verify:
+      AssertType: 0
+      value: 202

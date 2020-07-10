@@ -1,0 +1,1 @@
+{"story_description": "开启/关闭任务, streamId为任务id", "server": "ar_manager", "model": "dataStream", "switch": false, "request": {"method": "PUT", "url_path": "/manager/datastream/{$streamId}?switch=0"}, "body": "", "testcases": {"TestCase7": {"Description": "正常场景:关闭任务成功", "req_body": "", "runflag": true, "verify": {"AssertType": 0}}}}

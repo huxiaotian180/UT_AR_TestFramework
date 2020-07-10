@@ -1,0 +1,16 @@
+story_description: 删除SMTP配置信息
+server: SMTP
+model: smtp
+switch: false
+request:
+  method: delete
+  url_path: /manager/smtp
+
+testcases:
+  TestCase1:
+    Description: 正常场景：删除SMTP配置信息成功
+    req_body: ''
+    runflag: true
+    verify:
+      AssertType: 0
+      value: 200

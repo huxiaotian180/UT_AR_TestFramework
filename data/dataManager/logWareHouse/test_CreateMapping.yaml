@@ -1,0 +1,50 @@
+story_description: 创建映射
+server: dataManager
+model: logWareHouse
+switch: false
+request:
+  method: POST
+  url_path: /api/v1/dataManager/indexMapping
+body:
+  dataType: ${indexName}$
+  indexName: ${indexName}$
+testcases:
+  TestCase33:
+    Description: 正常场景:创建映射成功
+    req_body: ''
+    runflag: true
+    verify:
+      AssertType: 0
+      value: 200
+
+  TestCase34:
+    Description: 异常场景:索引名为空,创建映射失败
+    req_body: ''
+    runflag: true
+    verify:
+      AssertType: 0
+      value: 200
+
+  TestCase35:
+    Description: 异常场景:索引名包含特殊字符,创建映射失败
+    req_body: ''
+    runflag: true
+    verify:
+      AssertType: 0
+      value: 200
+
+  TestCase36:
+    Description: 异常场景:索引映射请求缺少数据类型,创建映射失败
+    req_body: ''
+    runflag: true
+    verify:
+      AssertType: 0
+      value: 200
+
+  TestCase37:
+    Description: 异常场景:索引映射关系已存在,创建映射失败
+    req_body: ''
+    runflag: true
+    verify:
+      AssertType: 0
+      value: 200
