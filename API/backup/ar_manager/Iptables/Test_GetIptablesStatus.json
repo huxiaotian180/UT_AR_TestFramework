@@ -1,1 +1,0 @@
-{"model": "Iptables", "request": {"method": "get", "url_path": "/v1/iptables/switch/status"}, "server": "ar_manager", "story_description": "白名单功能状态", "switch": true, "testcases": {"TestCase1": {"Description": "正常场景:白名单功能状态", "req_body": "", "runflag": true, "verify": {"AssertType": 0, "value": 200}}}}

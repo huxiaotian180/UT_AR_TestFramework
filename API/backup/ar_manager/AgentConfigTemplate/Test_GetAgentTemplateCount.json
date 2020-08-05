@@ -1,1 +1,0 @@
-{"model": "AgentConfigTemplate", "request": {"method": "get", "url_path": "/manager/agents/config/template/count"}, "server": "ar_manager", "story_description": "获取Agent配置模板总数", "switch": true, "testcases": {"TestCase1": {"Description": "正常场景:获取Agent配置模板总数", "req_body": "", "runflag": true, "verify": {"AssertType": 5, "key": "count", "db": "AgentConfigTemplate"}}}}

@@ -1,1 +1,0 @@
-{"story_description": "删除映射", "server": "dataManager", "model": "logWareHouse", "switch": false, "request": {"method": "DELETE", "url_path": "/api/v1/dataManager/indexMapping/${id}$"}, "body": "", "testcases": {"TestCase38": {"Description": "正常场景:删除映射成功", "req_body": "", "runflag": true, "verify": {"AssertType": 0}}}}

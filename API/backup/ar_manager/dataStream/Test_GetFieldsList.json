@@ -1,1 +1,0 @@
-{"story_description": "获取当前搜索条件下所有字段列表", "server": "ar_manager", "model": "dataStream", "switch": false, "request": {"method": "POST", "url_path": "/stream_manager/export_to_kafka/es_index?token=field_list"}, "body": "", "testcases": {"TestCase5": {"Description": "正常场景:获取当前搜索条件下所有字段列表成功", "req_body": "", "runflag": true, "verify": {"AssertType": 0}}}}

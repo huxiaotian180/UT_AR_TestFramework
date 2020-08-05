@@ -1,1 +1,0 @@
-{"story_description": "获取本地上传总数", "server": "ar_manager", "model": "upload", "switch": false, "request": {"method": "get", "url_path": "/manager/upload/count"}, "body": "", "testcases": {"TestCase14": {"Description": "正常场景", "isOperationDb": "", "req_body": "", "runflag": true, "verify": {"type": 0}}}}

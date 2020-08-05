@@ -1,1 +1,0 @@
-{"model": "AgentHostgroup", "request": {"method": "delete", "url_path": "/manager/agents/hostgroup/${GroupID}$"}, "server": "ar_manager", "story_description": "删除主机组", "switch": true, "testcases": {"TestCase1": {"Description": "正常场景:删除合法主机组信息", "req_body": "", "runflag": true, "verify": {"AssertType": 3, "db": "AgentGroup"}}}}

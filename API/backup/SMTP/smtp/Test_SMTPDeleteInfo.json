@@ -1,1 +1,0 @@
-{"story_description": "删除SMTP配置信息", "server": "SMTP", "model": "smtp", "switch": false, "request": {"method": "delete", "url_path": "/manager/smtp"}, "body": "", "testcases": {"TestCase1": {"Description": "正常场景：删除SMTP配置信息成功", "url_path": "", "isOperationDb": "", "req_body": "", "runflag": true, "verify": {"type": 0}}}}

@@ -1,1 +1,0 @@
-{"model": "AgentHost", "request": {"method": "get", "url_path": "/manager/agents/host/pool"}, "server": "ar_manager", "story_description": "获取主机信息", "switch": true, "testcases": {"TestCase1": {"Description": "正常场景:获取主机信息", "req_body": "", "runflag": true, "verify": {"AssertType": 0, "value": 200}}}}

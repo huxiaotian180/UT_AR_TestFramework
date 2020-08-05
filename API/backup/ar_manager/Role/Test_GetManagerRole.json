@@ -1,1 +1,0 @@
-{"model": "Role", "request": {"method": "get", "url_path": "/manager/role/${RoleID}$"}, "server": "ar_manager", "story_description": "获取角色信息", "switch": false, "testcases": {"TestCase1": {"Description": "正常场景:获取角色信息", "isOperationDb": "", "req_body": "", "runflag": true, "verify": {"AssertType": 0, "value": 200}}}}

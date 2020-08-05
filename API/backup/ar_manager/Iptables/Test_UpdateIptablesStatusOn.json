@@ -1,1 +1,0 @@
-{"model": "Iptables", "request": {"method": "post", "url_path": "/v1/iptables/update"}, "server": "ar_manager", "story_description": "更改白名单", "switch": true, "body": {"id": 1, "ip": "192.168.84.80", "label": "anyrobot-test"}, "testcases": {"TestCase1": {"Description": "正常场景:更改白名单", "req_body": "", "runflag": true, "verify": {"AssertType": 0, "value": 200}}}}

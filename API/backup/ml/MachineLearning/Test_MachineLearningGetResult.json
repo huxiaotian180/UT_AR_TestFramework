@@ -1,1 +1,0 @@
-{"story_description": "获取机器学习计算结果", "server": "ml", "model": "MachineLearning", "switch": false, "request": {"method": "get", "url_path": "/ml/fetch/${MLID}$"}, "body": "", "testcases": {"TestCase1": {"Description": "正常场景:获取机器学习计算结果成功", "isOperationDb": "", "req_body": "", "runflag": true, "verify": {"type": 0}}}}
